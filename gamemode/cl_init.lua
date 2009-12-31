@@ -49,8 +49,8 @@ function GM:UpdateHUD_Alive( InRound )
 				
 						local RoundNumber = vgui.Create( "DHudUpdater" );
                                 RoundNumber:SizeToContents()
-                                RoundNumber:SetValueFunction( function() return "$"..LocalPlayer():GetNetworkedInt("cash") end )
-                                RoundNumber:SetLabel( "CASH" )
+                                RoundNumber:SetValueFunction( function() return "$"..LocalPlayer():GetNetworkedInt("bounty") end )
+                                RoundNumber:SetLabel( "BOUNTY" )
                         Bar:AddItem( RoundNumber )
                
                         local RoundNumber = vgui.Create( "DHudUpdater" );
@@ -72,10 +72,6 @@ function GM:UpdateHUD_Alive( InRound )
         end
  
 end
-
-function HUDpaint()
-end
-hook.Add("HUDPaint", "BountySimple_HUDPaint", HUDpaint)
 
 function GM:AddScoreboardDeaths( ScoreBoard )
         local f = function( ply ) return ply:GetNetworkedInt("bounty") end
