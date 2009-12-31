@@ -8,35 +8,27 @@ util.PrecacheSound("bounty/ching1.wav")
 function GM:PlayerInitialSpawn( ply )
 	self.BaseClass:PlayerInitialSpawn( ply )
 	
+	ply:SetRandomClass()
 	ply.bounty = 5
 	UpdatePlayerVariables( ply )
-	ply:SetTeam(TEAM_MAIN)
-	ply:SetRandomClass()
-end
-
-function GM:PlayerJoinTeam( ply, teamid )
-	self.BaseClass:PlayerJoinTeam( ply, teamid )
-	
-	if teamid == TEAM_UNASSIGNED then
-		ply:SetTeam( TEAM_MAIN )
-	end
 end
 
 function GM:CanStartRound( iNum )
-	for k,ply in pairs(player.GetAll()) do
-		ply:SetTeam(TEAM_MAIN)
-		ply:SetRandomClass()
-	end
     return true
 end
 
-function GM:OnRoundStart( iNum )
-	UTIL_UnFreezeAllPlayers()
-	
-	for k,player in pairs( player.GetAll() ) do
+function GM:OnPreStartRound( round_number )
+	for k,ply in pairs(player.GetAll()) do
+		ply:SetRandomClass()
 		player.bounty = 5
 		UpdatePlayerVariables( player )
 	end
+	
+	self.BaseClass:OnPreStartRound( round_number )
+end
+
+function GM:OnRoundStart( round_number )
+	self.BaseClass:OnRoundStart( round_number )
 end
 
 function GM:PlayerDeath( Victim, Weapon, Killer )
@@ -86,7 +78,7 @@ function GM:SelectCurrentlyWinningPlayer()
 	local draw = 1
  
 	for k,v in pairs( player.GetAll() ) do
-		if v:Team() != TEAM_CONNECTING and v:Team() != TEAM_UNASSIGNED then
+		if v:Team() == TEAM_UNASSIGNED then
 			if v.bounty > topscore then
 				winner = v
 				topscore = v.bounty

@@ -34,7 +34,7 @@ GM.RealisticFallDamage = false
  
 GM.NoAutomaticSpawning = false		// Players don't spawn automatically when they die, some other system spawns them
 GM.RoundBased = true				// Round based, like CS
-GM.RoundLength = 60 * 2				// Round length, in seconds
+GM.RoundLength = 60 * 3				// Round length, in seconds
 GM.RoundPreStartTime = 4			// Preperation time before a round starts
 GM.RoundPostLength = 5				// Seconds to show the 'x team won!' screen at the end of a round
  
@@ -50,10 +50,9 @@ GM.HudSkin = "SimpleSkin"
 GM.ValidSpectatorModes = { OBS_MODE_CHASE, OBS_MODE_IN_EYE, OBS_MODE_ROAMING }
 GM.ValidSpectatorEntities = { "player" }	// Entities we can spectate
 
-TEAM_MAIN = 1
 function GM:CreateTeams()
-	team.SetUp( TEAM_MAIN, "Default Team", Color( 90, 90, 255, 255 ), true )
-	team.SetSpawnPoint( TEAM_MAIN,{"info_player_start", "info_player_terrorist", "info_player_rebel", "info_player_deathmatch"} )
-	team.SetClass( TEAM_MAIN, { "PistolMan", "Bang", "Whipper", "LongShot" } )
+	team.SetUp( TEAM_UNASSIGNED, "Default Team", Color( 90, 90, 255, 255 ), true )
+	team.SetSpawnPoint( TEAM_UNASSIGNED,{"info_player_start", "info_player_terrorist", "info_player_rebel", "info_player_deathmatch"} )
+	team.SetClass( TEAM_UNASSIGNED, { "PistolMan", "Bang", "Whipper", "LongShot" } )
 end
  
