@@ -83,7 +83,7 @@ function GM:AddScoreboardDeaths( ScoreBoard )
 end
 
 function GM:AddScoreboardKills( ScoreBoard )
-        local f = function( ply ) return ply:GetFrags() end
+        local f = function( ply ) return ply:Frags() end
         ScoreBoard:AddColumn( "Frags", 50, f, 0.5, nil, 6, 6 )
 end
 

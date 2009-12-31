@@ -34,7 +34,7 @@ function GM:OnRoundStart( iNum )
 	UTIL_UnFreezeAllPlayers()
 	
 	for k,player in pairs( player.GetAll() ) do
-		player.bounty = 1
+		player.bounty = 5
 		UpdatePlayerVariables( player )
 	end
 end
