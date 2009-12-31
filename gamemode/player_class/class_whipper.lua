@@ -9,6 +9,7 @@ CLASS.RunSpeed				= 580
 CLASS.DuckSpeed				= 0.4
 CLASS.JumpPower				= 470
 CLASS.StartHealth			= 75
+CLASS.PlayerModel			= "models/player/Kleiner.mdl"
 CLASS.DrawTeamRing			= true
 CLASS.Selectable			= true
 
